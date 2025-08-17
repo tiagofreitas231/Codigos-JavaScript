@@ -1,0 +1,61 @@
+let valores = [];
+const addValor = (x) => {
+    valores.push([valores.length+1,x]);
+}
+
+const media = () => {
+    let soma = 0;
+    for(x of valores)
+    soma += x[1];
+    return soma / valores.length;
+    }
+
+    const drawbasic = () => {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number','Pos');
+        data.addColumn('number','x');
+        data.addRows(valores);
+        var options = hAxis:{title:'posicao'}, vAxis: {title:'Valor de X'}
+        
+        var chart = new google.visualization.LineChart(document.getElementbyld('chart_div'));
+
+        chart.draw(data,options);
+    }
+
+
+
+<html><head>
+        <script type="text/javascript"
+        src="https:www.gstatic.com/charts/loader.js"></script>
+    </head><body>
+        <h1>Google Charts</h1>
+        <form>
+            <label>Valor de X</label>
+            <input type="number" id="v1"/>
+            <a href="#" onclick="executar()">Executar</a>
+        </form>
+        <div id="chart_div"></div>
+        <div id="media"></div>
+        <script src="ROT_MOD3-NC3.js"></script>
+        <script>
+            const executar = () => {
+            const x = eval(document.getElementByld("v1").value);
+            addValor(x);
+            google.charts.load('current',{packages:['corechart','line']});
+            google.charts.setOnLoadCallback(drawBasic);
+            document.geElementByld("media").innerHTML = `Media:${media()}`;
+            }
+        </script>
+        
+    </body>
+    
+    </html>
+
+
+
+
+
+
+
+
+    
